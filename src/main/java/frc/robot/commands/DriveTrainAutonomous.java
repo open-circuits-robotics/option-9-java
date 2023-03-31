@@ -17,7 +17,7 @@ public class DriveTrainAutonomous extends CommandBase {
   private final DriveTrainSubsystem driveTrainSubsystem;
   private final Timer m_timer;
   //private final DigitalInput digitalInput;
-  private ADIS16470_IMU gyro = RobotContainer.gyro;
+  private ADIS16470_IMU gyro = DriveTrainSubsystem.gyro;
 
   /**
    * Creates a new ExampleCommand.
@@ -25,7 +25,7 @@ public class DriveTrainAutonomous extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
 
-  public DriveTrainAutonomous(DriveTrainSubsystem driveTrainSubsystem, Timer m_timer, ADIS16470_IMU gyro) {
+  public DriveTrainAutonomous(DriveTrainSubsystem driveTrainSubsystem, Timer m_timer) {
     this.driveTrainSubsystem = driveTrainSubsystem;
     //this.digitalInput = dInput;
     this.m_timer = m_timer;

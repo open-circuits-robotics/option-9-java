@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import java.lang.Math;
 import frc.robot.RobotContainer;
+import frc.robot.CleanPrint;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -41,7 +42,7 @@ public class DriveTrainWithJoystick extends CommandBase {
   int targetRotation;
   boolean reversing;
 
-  public DriveTrainWithJoystick(DriveTrainSubsystem driveTrainSubsystem, ADIS16470_IMU gyro) {
+  public DriveTrainWithJoystick(DriveTrainSubsystem driveTrainSubsystem) {
     this.driveTrainSubsystem = driveTrainSubsystem;
     //gyro
     this.gyro = gyro;
@@ -146,12 +147,12 @@ public class DriveTrainWithJoystick extends CommandBase {
 
     //opens arm claw at a really slow speed (o.2)
     if (RobotContainer.joystick.getRawButton(6)){
-      System.out.println("opening...");
+      CleanPrint.println("opening claw...");
       driveTrainSubsystem.armOpener.set(1);
     }
     //closes arm claw at a really slow speed 
     if (RobotContainer.joystick.getRawButton(4)){
-      System.out.println("closing...");
+      CleanPrint.println("closing claw...");
       driveTrainSubsystem.armOpener.set(-1);
     }
 
@@ -200,7 +201,7 @@ public class DriveTrainWithJoystick extends CommandBase {
    
     driveTrainSubsystem.m_robotDrive.arcadeDrive(DriveMath.calculateSpeed(joystick), DriveMath.calculateTurnSpeed(joystick, sensitivity));
 
-    
+    CleanPrint.reset();
   }
 
 

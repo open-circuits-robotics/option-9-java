@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
@@ -25,7 +26,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public final PWMSparkMax armOpener = new PWMSparkMax(5);
   public final PWMSparkMax armBrake = new PWMSparkMax(6); 
   public boolean brakeOpen = false;
-
+  public static final ADIS16470_IMU gyro = new ADIS16470_IMU();
 
 
   public DriveTrainSubsystem() {
