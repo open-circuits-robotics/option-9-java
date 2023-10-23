@@ -5,18 +5,13 @@ import java.lang.Math;
 
 public class DriveMath {
 
-    public static double calculateSpeed(Joystick js)
+    public static double calculateSpeed(double jy, double jz)
     {
-        // 
-        if (js.getY() >= 0){
-        return Math.pow(js.getY(), 2) * ( (js.getRawAxis(3) * -0.25) + 0.75);
-        } else return Math.pow(js.getY(), 2) * -1 * ( (js.getRawAxis(3) * -0.25) + 0.75);
+        return jy * Math.abs(jy) * ( (jz * -0.25) + 0.75);
     }
-    public static double calculateTurnSpeed(Joystick js, double sense)
+
+    public static double calculateTurnSpeed(double jx, double sense)
     {
-        // 
-        if (js.getX() >= 0){
-        return Math.pow(js.getX(), 2) * sense;
-        } else return Math.pow(js.getX(), 2) * -1 * sense;
+        return jx * Math.abs(jx) * sense;
     }
 }

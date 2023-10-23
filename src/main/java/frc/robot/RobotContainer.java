@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 //import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.commands.DriveTrainWithJoystick;
+import frc.robot.commands.DriveTrainWithXbox;
 import frc.robot.commands.DriveTrainAutonomous;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -30,7 +31,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-  public static Joystick joystick = new Joystick(0);
+  public static XboxController xboxController = new XboxController(0);
   public static Timer m_timer = new Timer();
   //public static DigitalInput digitalInput = new DigitalInput(9);
   public static ADIS16470_IMU gyro = new ADIS16470_IMU();
@@ -39,14 +40,14 @@ public class RobotContainer {
   
   
 
-  private final DriveTrainWithJoystick driveTrainWithJoystick = new DriveTrainWithJoystick(driveTrainSubsystem, gyro);
+  private final DriveTrainWithXbox driveTrainWithXbox = new DriveTrainWithXbox(driveTrainSubsystem);
   private final DriveTrainAutonomous driveTrainAutonomous = new DriveTrainAutonomous(driveTrainSubsystem, m_timer, gyro);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    driveTrainSubsystem.setDefaultCommand(driveTrainWithJoystick);
+    driveTrainSubsystem.setDefaultCommand(driveTrainWithXbox);
   
   }
 
