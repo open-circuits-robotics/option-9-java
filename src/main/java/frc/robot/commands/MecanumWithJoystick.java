@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 import frc.robot.DriveMathJoystick;
-import frc.robot.DriveMathJoystickMecanum;
+import frc.robot.DriveMathMecanum;
 
 /** An example command that uses an example subsystem. */
 public class MecanumWithJoystick extends CommandBase {
@@ -111,7 +111,7 @@ public class MecanumWithJoystick extends CommandBase {
     mecanumSubsystem.m_rightDriveTwo.set(joystick.getY());
     */
     //System.out.println(DriveMathJoystickMecanum.calculateTurnSpeed(joystick.getZ(), sensitivity));
-    mecanumSubsystem.mecanumDrive.driveCartesian(DriveMathJoystickMecanum.calculateSpeed(joystick.getY(), joystick.getRawAxis(3)), DriveMathJoystickMecanum.calculateSpeed((joystick.getX() * -1), joystick.getRawAxis(3)), DriveMathJoystickMecanum.calculateTurnSpeed(joystick.getZ(), sensitivity));
+    mecanumSubsystem.mecanumDrive.driveCartesian(DriveMathMecanum.calculateSpeed(joystick.getY(), joystick.getRawAxis(3)), DriveMathMecanum.calculateSpeed((joystick.getX() * -1), joystick.getRawAxis(3)), DriveMathMecanum.calculateTurnSpeed(joystick.getZ()*-1, sensitivity));
 
     
   }

@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveTrainWithJoystick;
 import frc.robot.commands.DriveTrainWithXbox;
 import frc.robot.commands.MecanumWithJoystick;
+import frc.robot.commands.MecanumWithXBox;
 import frc.robot.commands.DriveTrainAutonomous;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.MecanumSubsystem;
@@ -36,7 +37,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   private final MecanumSubsystem mecanumSubsystem = new MecanumSubsystem();
-  public static CommandXboxController xboxController = new CommandXboxController(1);
+  public static XboxController xboxController = new XboxController(1);
   public static Joystick joystick = new Joystick(0);
   public static Timer m_timer = new Timer();
   //public static DigitalInput digitalInput = new DigitalInput(9);
@@ -48,15 +49,24 @@ public class RobotContainer {
 
   private final DriveTrainWithXbox driveTrainWithXbox = new DriveTrainWithXbox(driveTrainSubsystem);
   private final MecanumWithJoystick mecanumWithJoystick = new MecanumWithJoystick(mecanumSubsystem);
+  private final MecanumWithXBox mecanumWithXBox = new MecanumWithXBox(mecanumSubsystem);
   private final DriveTrainWithJoystick driveTrainWithJoystick = new DriveTrainWithJoystick(driveTrainSubsystem);
   private final DriveTrainAutonomous driveTrainAutonomous = new DriveTrainAutonomous(driveTrainSubsystem, m_timer, gyro);
+
+  private final boolean useXbox = true;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    mecanumSubsystem.setDefaultCommand(mecanumWithJoystick);
-  
+    if (useXbox)
+    {
+      mecanumSubsystem.setDefaultCommand(mecanumWithXBox);
+    }
+    else
+    {
+      mecanumSubsystem.setDefaultCommand(mecanumWithJoystick);
+    }
   }
 
   /**

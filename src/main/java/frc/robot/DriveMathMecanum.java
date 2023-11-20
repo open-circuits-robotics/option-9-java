@@ -1,6 +1,6 @@
 package frc.robot;
 
-public class DriveMathJoystickMecanum {
+public class DriveMathMecanum {
     public static double calculateSpeed(double x, double sensitivity)
     {
         return x * Math.abs(x) * ( (sensitivity * -0.25) + 0.75);
